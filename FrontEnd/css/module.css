@@ -8,26 +8,29 @@ body , html {
     
 }
 
-h2,h3,h4,h5 {
+h2{
     margin: 0;
     padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 p{
     margin: 0;
     padding: 0;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
 }
 /* Custom scrollbar styles */
 body::-webkit-scrollbar {
-    width: 10px; /* Set the width of the scrollbar */
+    width: 10px;
 }
-
 /* Track */
 body::-webkit-scrollbar-track {
     background: #f1f1f1; /* Color of the scrollbar track */
 }
 
-/* Handle */
 body::-webkit-scrollbar-thumb {
     background: greenyellow; /* Color of the scrollbar thumb */
     border-radius: 5px; /* Roundness of the scrollbar thumb */
@@ -110,9 +113,9 @@ body::-webkit-scrollbar-thumb:hover {
     position: fixed;
     top: 0;
     left: 25px;
-    background-color: white; /* Ensures the heading remains visible */
-    padding: 10px 20px; /* Adjust padding as needed */
-    z-index: 1000; /* Ensures it's above other content */
+    background-color: white;
+    padding: 10px 20px;
+    z-index: 1000; 
   }
 
 }
@@ -167,22 +170,24 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 .blog-cover {
-    flex: 0 0 200px; /* Fixed width for cover image */
+    flex: 0 0 200px;
     max-width: 200px;
-    background-color: #f0f0f0; /* Background color if image doesn't load */
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 
 
 .blog-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 
 .blog-cover img {
-    width: 100%; /* Ensure image fills its container */
-    height: auto; /* Maintain aspect ratio */
-    /* border-radius: 8px 0 0 8px; Rounded corners only on the left */
+    width: 100%; 
+    height: auto; 
+    
 }
 
 
@@ -207,12 +212,5 @@ body::-webkit-scrollbar-thumb:hover {
     font-style: italic;
     color: #888;
 }
-
-
-
-
-
-
-
 
 /* TODAYHOT END */

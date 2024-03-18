@@ -18,13 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $para1 = $_POST['Para1'];
     $para2 = $_POST['Para2'];
     $para3 = $_POST['Para3'];
+    $imgurl = $_POST['ImgUrl'];
 
     // If we directly put value => blogs might have appostrophe which might interfere with the sql command itself
-    $sql = "INSERT INTO blogs (Author, Title, Para1, Para2, Para3) 
-            VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO blogs (Author, Title, Para1, Para2, Para3,ImgUrl) 
+            VALUES (?, ?, ?, ?, ?,?)";
     
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $author, $title, $para1, $para2, $para3);
+    $stmt->bind_param("sssss", $author, $title, $para1, $para2, $para3,$imgurl);
     if ($stmt->execute()) {
         http_response_code(200);
         echo json_encode(array('message' => 'New blog added successfully'));

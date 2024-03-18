@@ -26,3 +26,13 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       console.error('Error:', error);
     });
   });
+
+
+
+  function logout() {
+    // Clear session storage
+    sessionStorage.clear();
+    if (window.parent !== window) {
+        window.parent.location.href = "../index.html";
+    }
+}

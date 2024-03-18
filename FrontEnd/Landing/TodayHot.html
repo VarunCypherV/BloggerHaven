@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/module.css">
-    <title>Blog Card</title>
 </head>
 <body>
     <h1>Today's Hot Reads</h1>
-    <div id="blogs-container"> <!--blog render hereeee-->
+    <div id="blogs-container"> 
     </div>
 
     <script>
@@ -33,7 +32,7 @@
             const blogCover = document.createElement('div');
             blogCover.classList.add('blog-cover');
             const coverImage = document.createElement('img');
-            coverImage.src = 'https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg';
+            coverImage.src = blog.ImgUrl;
             coverImage.alt = 'Blog Cover Image';
             blogCover.appendChild(coverImage);
 
@@ -55,10 +54,8 @@
 
             blogCard.appendChild(blogCover);
             blogCard.appendChild(blogDetails);
-
-            // Add event listener to open blog page when clicked
             blogCard.addEventListener('click', function () {
-                const slug = blog.BlogId; // Assuming BlogId is the identifier for the blog
+                const slug = blog.BlogId; 
                 const url = `../Blogs/Blog.html?slug=${slug}`;
                 window.open(url, '_blank');
             });

@@ -74,7 +74,7 @@
             document.getElementById("Para2").innerHTML = data.Para2;
             document.getElementById("Para3").innerHTML = data.Para3;
             document.getElementById("author-info").textContent = "Author: " + data.Author;
-            document.getElementById("story-image").src = data.ImageUrl || "https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg";
+            document.getElementById("story-image").src = data.ImgUrl ;
         })
         .catch((error) => console.error("Error fetching article:", error));
 </script>
