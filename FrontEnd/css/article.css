@@ -1,0 +1,77 @@
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+/* Header styles */
+header {
+    background-color: greenyellow;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+}
+/* Main content styles */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+.story {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.story h3 {
+    color: red; /* Red color for story heading */
+}
+.story-title {
+    margin-top: 0;
+}
+.author-info {
+    font-size: 14px;
+    color: #555;
+}
+.author-info span {
+    color: #777;
+}
+.story-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.heart {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.red {
+    color: red;
+}
+
+.invert {
+    filter: invert(120%);
+}
+
+/* Footer styles */
+footer {
+    background-color: greenyellow;
+    color: black;
+    padding: 10px 0;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Write Your Article</title>
+
+    <link rel="stylesheet" href="./css/write.css" />
+  </head>
+  <body>
+    <header style="margin-right:50px">
+      <h1>BloggerHaven <br/> <span style="font-weight: 200;">Write your Mind</p></h1>
+    </header>
+    <div class="container">
+      <!-- Added a container class -->
+      <form>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Enter title" />
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input type="text" id="author" placeholder="Enter your name" />
+        </div>
+        <div>
+          <label for="content1">Paragraph 1</label>
+          <textarea
+            id="content1"
+            rows="6"
+            placeholder="Write your article here..."
+          ></textarea>
+        </div>
+        <div>
+          <label for="content2">Paragraph 2</label>
+          <textarea
+            id="content2"
+            rows="6"
+            placeholder="Write your article here..."
+          ></textarea>
+        </div>
+        <div>
+          <label for="content3">Paragraph 3</label>
+          <textarea
+            id="content3"
+            rows="6"
+            placeholder="Write your article here..."
+          ></textarea>
+        </div>
+        <button type="submit" onclick=onSubmit()>Submit</button>
+      </form>
+
+    </div>
+  </body>
+</html>

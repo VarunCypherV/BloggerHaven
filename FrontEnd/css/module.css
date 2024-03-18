@@ -1,0 +1,211 @@
+body , html {
+    margin:0px;
+    padding:0px;
+    overflow-y: auto;
+    > h1 {
+        font-family: monospace;
+    }
+    
+}
+
+h2,h3,h4,h5 {
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+/* Custom scrollbar styles */
+body::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+    background: greenyellow; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Roundness of the scrollbar thumb */
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3; /* Change color of the scrollbar thumb on hover */
+}
+
+
+/* NAV BAR CSS START*/
+#navbar {
+    background-color: rgb(153, 255, 0);
+}
+.containerrow {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden; 
+}
+
+.barLeft {
+    padding:50px;
+}
+
+.barRight {
+    padding:50px;
+    margin-left: auto; 
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links{
+    margin-right:50px;
+    > a{
+        padding-left: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        color:"black";
+    }
+    > a:link{
+        color: black;
+    }
+    >a:visited {
+        color: black;
+    }
+}
+.navbutton a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border: 2px solid greenyellow;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbutton a:hover {
+    background-color: #f0f0f0;
+    cursor:pointer;
+}
+
+/* NAV BAR CSS END */
+/* OTHER READS CSS START */
+/* Media query for responsiveness */
+
+
+.otherreads {
+  margin-top: 60px;
+  > h1 {
+    position: fixed;
+    top: 0;
+    left: 25px;
+    background-color: white; /* Ensures the heading remains visible */
+    padding: 10px 20px; /* Adjust padding as needed */
+    z-index: 1000; /* Ensures it's above other content */
+  }
+
+}
+
+
+.blog-oread-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit the summary to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* OTHER READS CSS END */
+/* RECENTLY CSS START */
+.blog-recent {
+    display: flex;
+    flex-direction: row;
+}
+.blog-left{
+    flex:1;
+    margin-right: 50px;
+}
+.blog-right{
+    flex:1;
+}
+.blog-recent-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit the summary to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+/* RECENTLY CSS END */
+/* TODAYHOT START */
+.blog-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin:10px 10px 30px 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease; 
+    max-height: 140px;
+}
+
+
+.blog-cover {
+    flex: 0 0 200px; /* Fixed width for cover image */
+    background-color: #f0f0f0; /* Background color if image doesn't load */
+}
+.blog-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+
+.blog-cover img {
+    width: 100%; /* Ensure image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    /* border-radius: 8px 0 0 8px; Rounded corners only on the left */
+}
+
+
+.blog-details {
+    flex: 1;
+    padding: 5px 10px;
+    align-items: center;
+}
+
+.blog-title {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.blog-summary {
+    margin-top: 10px;
+    color: #666;
+}
+
+.blog-author {
+    margin-top: 10px;
+    font-style: italic;
+    color: #888;
+}
+
+
+
+
+
+
+
+
+/* TODAYHOT END */
