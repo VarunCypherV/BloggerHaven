@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             VALUES (?, ?, ?, ?, ?,?)";
     
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $author, $title, $para1, $para2, $para3,$imgurl);
+    $stmt->bind_param("ssssss", $author, $title, $para1, $para2, $para3,$imgurl);
     if ($stmt->execute()) {
         http_response_code(200);
         echo json_encode(array('message' => 'New blog added successfully'));
