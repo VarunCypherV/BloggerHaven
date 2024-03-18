@@ -1,4 +1,4 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
+document.getElementById("blogForm").addEventListener("submit", function(event) {
     event.preventDefault();
     var form = event.target;
     var formData = new FormData(form);
@@ -10,14 +10,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     .then(data => {
       if (data.success) {
         alert(data.message);
-        // Setting userId in session storage
-    sessionStorage.setItem('userId', data.userId);
-
-// Retrieving userId from session storage
-
-
-        window.location.href = "Landing.html?userId=" + data.userId;
-
       } else {
         alert(data.message);
       }

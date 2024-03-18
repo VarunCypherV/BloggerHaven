@@ -3,96 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/module.css" />
     <title>OtherReads</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Assuming you have a separate CSS file for styles -->
+    <link rel="stylesheet" href="../css/module.css" />
   </head>
   <body>
-    <h1 id="other-reads-title" style="margin-left: 15px; margin-bottom: 100px; position: fixed;">Other Reads</h1>
+    <h1
+      id="other-reads-title"
+      style="margin-left: 15px; margin-bottom: 100px; position: fixed"
+    >
+      Other Reads
+    </h1>
 
-    <div class="otherreads">
-      <div class="blog-card">
-        <div class="blog-cover">
-          <img
-            src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"
-            alt="Blog 1 Cover"
-          />
-        </div>
-        <div class="blog-details">
-          <h2>Blog Title</h2>
-          <p class="blog-oread-summary blog-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="blog-author ">Blog Author</p>
-        </div>
-      </div>
+    <div class="otherreads" id="blog-container"></div>
 
-      <div class="blog-card">
-        <div class="blog-cover">
-          <img
-            src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"
-            alt="Blog 1 Cover"
-          />
-        </div>
-        <div class="blog-details">
-          <h2>Blog Title</h2>
-          <p class="blog-oread-summary blog-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="blog-author ">Blog Author</p>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cover">
-          <img
-            src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"
-            alt="Blog 1 Cover"
-          />
-        </div>
-        <div class="blog-details">
-          <h2>Blog Title</h2>
-          <p class="blog-oread-summary blog-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="blog-author ">Blog Author</p>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cover">
-          <img
-            src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"
-            alt="Blog 1 Cover"
-          />
-        </div>
-        <div class="blog-details">
-          <h2>Blog Title</h2>
-          <p class="blog-oread-summary blog-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="blog-author ">Blog Author</p>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cover">
-          <img
-            src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"
-            alt="Blog 1 Cover"
-          />
-        </div>
-        <div class="blog-details">
-          <h2>Blog Title</h2>
-          <p class="blog-oread-summary blog-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="blog-author ">Blog Author</p>
-        </div>
-      </div>
-    <script src="../js/OtherReads.js"></script>
+    <script>
+      fetch("http://localhost:80/BlogWebsite/Backend/AllBlogDetails.php")
+        .then((response) => response.json())
+        .then((data) => {
+          const blogContainer = document.getElementById("blog-container");
+
+          data.forEach((blog) => {
+            const blogCard = document.createElement("div");
+            blogCard.classList.add("blog-card");
+
+            const blogCover = document.createElement("div");
+            blogCover.classList.add("blog-cover");
+            const coverImg = document.createElement("img");
+            coverImg.src =
+              "https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg"; // You can use blog cover image here
+            coverImg.alt = "Blog Cover";
+            blogCover.appendChild(coverImg);
+
+            const blogDetails = document.createElement("div");
+            blogDetails.classList.add("blog-details");
+
+            const title = document.createElement("h2");
+            title.textContent = blog.Title;
+
+            const summary = document.createElement("p");
+            summary.classList.add("blog-oread-summary", "blog-summary");
+            summary.textContent = blog.Para1;
+
+            const author = document.createElement("p");
+            author.classList.add("blog-author");
+            author.textContent = "Author: " + blog.Author;
+
+            blogDetails.appendChild(title);
+            blogDetails.appendChild(summary);
+            blogDetails.appendChild(author);
+
+            blogCard.appendChild(blogCover);
+            blogCard.appendChild(blogDetails);
+
+            blogContainer.appendChild(blogCard);
+          });
+        })
+        .catch((error) => console.error("Error fetching blogs:", error));
+      window.addEventListener("scroll", function () {
+        const otherReadsTitle = document.getElementById("other-reads-title");
+        const blogContainer = document.getElementById("blog-container");
+        const blogCards = document.querySelectorAll(".blog-card");
+
+        const otherReadsTitleRect = otherReadsTitle.getBoundingClientRect();
+
+        blogCards.forEach((blogCard) => {
+          const blogCardRect = blogCard.getBoundingClientRect();
+
+          if (blogCardRect.top <= otherReadsTitleRect.top + 10) {
+            blogCard.classList.add("invisible");
+          } else {
+            blogCard.classList.remove("invisible");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

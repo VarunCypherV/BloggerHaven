@@ -8,8 +8,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-$Username= $_POST['Username'];
+$Username = $_POST['Username'];
 $Password = $_POST['Password'];
 
 if(empty($Username) || empty($Password)) {
@@ -18,17 +17,19 @@ if(empty($Username) || empty($Password)) {
     exit();
 }
 
-$sql = "SELECT * FROM users WHERE Username = '$Username' AND password = '$Password'";
-$result = $conn->query($sql);
+// Generate UserId (UI + random 4 digits)
+// Initialize Liked as empty JSON
+$Liked = json_encode(array());
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $userId = $row['UserId']; 
-    $response = array("success" => true, "message" => "Login successful.", "userId" => $userId);
+$sql = "INSERT INTO users (Username, Password, Liked) VALUES ('$Username', '$Password', '$Liked')";
+
+if ($conn->query($sql) === TRUE) {
+    $response = array("success" => true, "message" => "Registration successful.");
     echo json_encode($response);
 } else {
-    $response = array("success" => false, "message" => "Invalid User or password.");
+    $response = array("success" => false, "message" => "Error: " . $sql . "<br>" . $conn->error);
     echo json_encode($response);
 }
+
 $conn->close();
 ?>

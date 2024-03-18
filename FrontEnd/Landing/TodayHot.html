@@ -7,27 +7,66 @@
     <title>Blog Card</title>
 </head>
 <body>
+    <h1>Today's Hot Reads</h1>
+    <div id="blogs-container"> <!--blog render hereeee-->
+    </div>
 
-    <h1> Today's Hot Reads</h1>
-    <div class="blog-card">
-        <div class="blog-cover">
-            <img src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg" alt="Blog Cover Image">
-        </div>
-        <div class="blog-details">
-            <h2 class="blog-title">Blog Title</h2>
-            <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et lectus euismod, laoreet velit vitae, sodales purus.</p>
-            <p class="blog-author">Author: John Doe</p>
-        </div>
-    </div>
-    <div class="blog-card">
-        <div class="blog-cover">
-            <img src="https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg" alt="Blog Cover Image">
-        </div>
-        <div class="blog-details">
-            <h2 class="blog-title">Blog Title</h2>
-            <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et lectus euismod, laoreet velit vitae, sodales purus.</p>
-            <p class="blog-author">Author: John Doe</p>
-        </div>
-    </div>
+    <script>
+        function fetchAndRenderBlogs() {
+            fetch('http://localhost:80/BlogWebsite/Backend/AllBlogDetails.php')
+            .then(response => response.json())
+            .then(data => {
+                const blogsContainer = document.getElementById('blogs-container');
+                const shuffledBlogs = shuffleArray(data);
+                const selectedBlogs = shuffledBlogs.slice(0, 2);
+                selectedBlogs.forEach(blog => {
+                    const blogCard = createBlogCard(blog);
+                    blogsContainer.appendChild(blogCard);
+                });
+            })
+            .catch(error => console.error('Error fetching blogs:', error));
+        }
+        function createBlogCard(blog) {
+            const blogCard = document.createElement('div');
+            blogCard.classList.add('blog-card');
+
+            const blogCover = document.createElement('div');
+            blogCover.classList.add('blog-cover');
+            const coverImage = document.createElement('img');
+            coverImage.src = 'https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg';
+            coverImage.alt = 'Blog Cover Image';
+            blogCover.appendChild(coverImage);
+
+            const blogDetails = document.createElement('div');
+            blogDetails.classList.add('blog-details');
+            const title = document.createElement('h2');
+            title.classList.add('blog-title');
+            title.textContent = blog.Title;
+            const summary = document.createElement('p');
+            summary.classList.add('blog-summary');
+            summary.textContent = blog.Para1.substring(0, 100) + '...';
+            const author = document.createElement('p');
+            author.classList.add('blog-author');
+            author.textContent = 'Author: ' + blog.Author;
+
+            blogDetails.appendChild(title);
+            blogDetails.appendChild(summary);
+            blogDetails.appendChild(author);
+
+            blogCard.appendChild(blogCover);
+            blogCard.appendChild(blogDetails);
+
+            return blogCard;
+        }
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        fetchAndRenderBlogs();
+        setInterval(fetchAndRenderBlogs, 24 * 60 * 60 * 1000);
+    </script>
 </body>
 </html>

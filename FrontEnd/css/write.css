@@ -65,3 +65,10 @@ button[type="submit"]:hover {
   background-color: greenyellow;
 }
 
+.header {
+  margin-right:50px;
+
+  >span {
+    font-weight: 200;
+  }
+}

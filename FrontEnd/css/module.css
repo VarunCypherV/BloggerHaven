@@ -125,6 +125,9 @@ body::-webkit-scrollbar-thumb:hover {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.invisible {
+    visibility: hidden;
+}
 
 /* OTHER READS CSS END */
 /* RECENTLY CSS START */
@@ -165,8 +168,12 @@ body::-webkit-scrollbar-thumb:hover {
 
 .blog-cover {
     flex: 0 0 200px; /* Fixed width for cover image */
+    max-width: 200px;
     background-color: #f0f0f0; /* Background color if image doesn't load */
 }
+
+
+
 .blog-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }

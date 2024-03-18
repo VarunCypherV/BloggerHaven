@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/index.css" rel="stylesheet">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="./css/index.css"/>
 </head>
 <body>
-    <div id="container" >
-        <div id="top">
-            <iframe id="navbar" src="./Landing/navbar.html"></iframe>
+
+<div class="container">
+      <div class="card">
+        <div class="card-header">
+          Login
         </div>
-        <div id="bottom">
-            <div id="left" >
-                <iframe src="./Landing/TodayHot.html" id="recent1"></iframe>
-                <iframe src="./Landing/Recently.html" id="recent2"></iframe>
+        <div class="card-body">
+          <form id="loginForm" method="POST" action="http://localhost:80/BlogWebsite/BackEnd/LoginDetails">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="Username" required>
             </div>
-            <div id="right" >
-                <iframe src="./Landing/OtherReads.html"></iframe>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="Password" required>
             </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+          </form>
         </div>
-    </div>
-      
+      </div>
+</div>
+
+<script src="./js/index.js"></script>
 </body>
 </html>
