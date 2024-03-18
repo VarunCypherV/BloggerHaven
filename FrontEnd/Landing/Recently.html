@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,4 +57,72 @@
             .catch(error => console.error('Error fetching data:', error));
     </script>
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/module.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Recently Liked</h1>
+    <div class="blog-recent" id="recent-liked">
+    </div>
+    
+    <script>
+        var userId = sessionStorage.getItem('userId');
+        fetch(`http://localhost:80/BlogWebsite/BackEnd/RecentlyLiked.php?UserId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                const recentLikedDiv = document.getElementById('recent-liked');
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        const blog = data[key];
+                        const blogCard = document.createElement('div');
+                        blogCard.classList.add('blog-card', 'blog-left');
+
+                        const blogCover = document.createElement('div');
+                        blogCover.classList.add('blog-cover');
+                        const img = document.createElement('img');
+                        img.src = 'https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg' //blog.CoverImageUrl; // Assuming this is the key for cover image URL
+                        img.alt = blog.Title; 
+                        blogCover.appendChild(img);
+
+                        const blogDetails = document.createElement('div');
+                        blogDetails.classList.add('blog-details');
+
+                        const title = document.createElement('h2');
+                        title.textContent = blog.Title;
+
+                        const summary = document.createElement('p');
+                        summary.classList.add('blog-oread-summary', 'blog-summary');
+                        summary.textContent = blog.Para1;
+                        const author = document.createElement('p');
+                        author.classList.add('blog-author');
+                        author.textContent = 'Author: ' + blog.Author;
+
+                        blogDetails.appendChild(title);
+                        blogDetails.appendChild(summary);
+                        blogDetails.appendChild(author);
+
+                        blogCard.appendChild(blogCover);
+                        blogCard.appendChild(blogDetails);
+
+                        // Add event listener to open blog page when clicked
+                        blogCard.addEventListener('click', function () {
+                            const slug = blog.BlogId; // Assuming BlogId is the identifier for the blog
+                            const url = `../Blogs/Blog.html?slug=${slug}`;
+                            window.open(url, '_blank');
+                        });
+
+                        recentLikedDiv.appendChild(blogCard);
+                    }
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
 </html>
+

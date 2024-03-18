@@ -25,6 +25,11 @@
           data.forEach((blog) => {
             const blogCard = document.createElement("div");
             blogCard.classList.add("blog-card");
+            blogCard.addEventListener("click", function () {
+              const slug = blog.BlogId
+              const url = "../Blogs/Blog.html?slug=" + slug;
+              window.open(url, "_blank");
+            });
 
             const blogCover = document.createElement("div");
             blogCover.classList.add("blog-cover");

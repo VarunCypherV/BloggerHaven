@@ -56,6 +56,13 @@
             blogCard.appendChild(blogCover);
             blogCard.appendChild(blogDetails);
 
+            // Add event listener to open blog page when clicked
+            blogCard.addEventListener('click', function () {
+                const slug = blog.BlogId; // Assuming BlogId is the identifier for the blog
+                const url = `../Blogs/Blog.html?slug=${slug}`;
+                window.open(url, '_blank');
+            });
+
             return blogCard;
         }
         function shuffleArray(array) {

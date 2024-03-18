@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloggerHaven</title>
+    <link rel="stylesheet" href="../css/blog.css">
+    <style>
+        .like-container {
+            display: flex;
+            align-items: center;
+        }
+        .like-container label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BloggerHaven</h1>
+</header>
+
+<div class="container">
+    <div class="story">
+        <div>
+            <h3>Story</h3>
+            <h1 class="story-title" id="story-title">Loading...</h1>
+            <div>
+                <small class="author-info" id="author-info">Author Name <span>Timestamp &middot; Read Time</span></small>
+            </div>
+        </div>
+        <div>
+            <img src="" class="story-image" id="story-image">
+        </div>
+        <div id="Para1">
+            <p>Loading...</p>
+        </div>
+        <br/>
+        <div id="Para2">
+            <p>Loading...</p>
+        </div>
+        <br/>
+        <div id="Para3">
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <div class="like-container">
+        <p>A like please </p>
+        <label for="heart1" title="1 heart"><span class="heart red" data-value="1">❤️</span></label>
+    </div>        
+</div>
+
+<footer>
+    <div>
+        <span><strong>BloggerHaven</strong></span> Copyright &copy;
+        <script>document.write(new Date().getFullYear())</script>
+    </div>
+</footer>
+<script src="../js/article.js"></script>
+<script>
+    // Retrieve slug parameter from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get('slug');
+    // Fetch article data based on the slug
+    fetch("http://localhost:80/BlogWebsite/Backend/SpecificBlog.php?BlogId=" + slug)
+        .then((response) => response.json())
+        .then((data) => {
+            // Update the HTML content with the fetched article data
+            document.getElementById("story-title").textContent = data.Title;
+            document.getElementById("Para1").innerHTML = data.Para1;
+            document.getElementById("Para2").innerHTML = data.Para2;
+            document.getElementById("Para3").innerHTML = data.Para3;
+            document.getElementById("author-info").textContent = "Author: " + data.Author;
+            document.getElementById("story-image").src = data.ImageUrl || "https://thumbs.dreamstime.com/b/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-worktable-110423482.jpg";
+        })
+        .catch((error) => console.error("Error fetching article:", error));
+</script>
+</body>
+</html>
